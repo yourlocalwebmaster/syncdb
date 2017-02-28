@@ -9,7 +9,7 @@ if [ -w ${saveBackupPath} ]; then
         ## Export Database B
         mysqldump -h ${db_B_host} -u ${db_B_user} -p${db_B_pass} ${db_B_name} > ${saveBackupPath}/${db_B_name}_tmp.sql
         ## Clear current database.
-        mysql -h ${db_A_host} -u ${db_A_user} -p${db_A_pass} ${db_A_name} < /var/www/SyncDB/droptables.sql
+        mysql -h ${db_A_host} -u ${db_A_user} -p${db_A_pass} ${db_A_name} < ${dir}/droptables.sql
         ## Import Database B into Database A
         mysql -h ${db_A_host} -u ${db_A_user} -p${db_A_pass} ${db_A_name} < ${saveBackupPath}/${db_B_name}_tmp.sql
 else
